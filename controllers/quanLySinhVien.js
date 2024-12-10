@@ -34,10 +34,9 @@ window.renderTableSinhVien = function (target) {
         <td>${sinhVien.loaiSinhVien}</td>
         <td>
             <button class="btn btn-danger text-white rounded" onclick="xoa('${sinhVien.maSinhVien}')">Xoá</button>
-        </td>
-        <td>
             <button class="btn btn-primary text-white rounded" onclick="chinhSua('${sinhVien.maSinhVien}')">Chỉnh sửa</button>
         </td>
+        
     </tr>`;
     }
     document.getElementById('tblSinhVien').innerHTML = htmlString;
@@ -81,11 +80,9 @@ document.querySelector('#btnLuuThongTin').onclick= function (e) {
     // Tìm sinh viên trong mảng để cập nhật thông tin
     let svTrongMang = arrSinhVien.find(sv => sv.maSinhVien === svEdit.maSinhVien);
 
-    if (svTrongMang) {
+    if (svTrongMang!== undefined) {
         for (let key in svTrongMang) {
-            if (svEdit.hasOwnProperty(key)) {
-                svTrongMang[key] = svEdit[key];
-            }
+            svTrongMang[key] = svEdit[key]; 
         }
 
         // Cập nhật lại giao diện
